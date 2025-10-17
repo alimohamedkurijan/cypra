@@ -1,0 +1,7 @@
+{
+  "name": "cypra-root",
+  "private": true,
+  "devDependencies": {
+    "@netlify/plugin-nextjs": "^5"
+  }
+}
