@@ -12,9 +12,7 @@ export default function Home() {
         <div className="absolute inset-0 bg-[radial-gradient(600px_circle_at_20%_10%,_rgba(34,197,94,0.15),_transparent_60%),radial-gradient(700px_400px_at_80%_20%,_rgba(34,197,94,0.08),_transparent_60%)] pointer-events-none" />
         <div className="mx-auto max-w-6xl px-4 sm:px-6 py-24 sm:py-28">
           <div className="max-w-2xl">
-            <p className="inline-flex items-center rounded-full border border-border/70 bg-card/70 px-2.5 py-1 text-xs text-muted-foreground backdrop-blur">
-              {t.badge}
-            </p>
+          
             <h1 className="mt-6 text-4xl sm:text-5xl md:text-6xl font-semibold tracking-tight">
               {t.heroTitle}
             </h1>
@@ -26,10 +24,10 @@ export default function Home() {
             </p>
             <div className="mt-8 flex flex-col sm:flex-row gap-3">
               <a
-                href="#tracks"
+                href="/training/fundamentals"
                 className="inline-flex items-center justify-center rounded-md bg-primary text-primary-foreground px-5 py-3 text-sm font-medium shadow-sm hover:brightness-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
               >
-                {t.ctaTracks}
+                {t.ctaFundamentals}
               </a>
               <a
                 href="/training"
@@ -42,27 +40,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Tracks */}
-      <section id="tracks" className="mx-auto max-w-6xl px-4 sm:px-6 py-16 sm:py-20">
-        <h2 className="text-2xl sm:text-3xl font-semibold">{t.tracksTitle}</h2>
-        <p className="mt-2 text-muted-foreground max-w-2xl">{t.tracksDesc}</p>
-        <div className="mt-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {[
-            { title: t.cardNetworking, desc: t.cardNetworkingDesc },
-            { title: t.cardWeb, desc: t.cardWebDesc },
-            { title: t.cardCrypto, desc: t.cardCryptoDesc },
-            { title: t.cardlinux, desc: t.cardlinuxDesc },
-          ].map((card) => (
-            <div key={card.title} className="rounded-xl border border-border bg-card p-5 hover:shadow-sm transition-shadow">
-              <h3 className="text-lg font-medium">{card.title}</h3>
-              <p className="mt-1 text-sm text-muted-foreground">{card.desc}</p>
-              <div className="mt-4">
-                <a className="text-primary hover:underline" href="#">{t.viewModules} →</a>
-              </div>
-            </div>
-          ))}
-        </div>
-      </section>
 
       {/* Training */}
       <section id="training" className="mx-auto max-w-6xl px-4 sm:px-6 py-16 sm:py-20">
@@ -113,17 +90,8 @@ const en = {
     "Cypra guides you through core concepts like networking, web security, cryptography, and threat modeling using practical, bite-sized modules.",
   ctaTracks: "Explore learning tracks",
   ctaTraining: "View Training Programs",
-  tracksTitle: "Learning tracks",
-  tracksDesc: "Progress through curated paths designed for beginners and upskillers.",
-  cardNetworking: "Networking Basics",
-  cardNetworkingDesc: "OSI model, TCP/IP, routing, and traffic analysis.",
-  cardWeb: "Web Security",
-  cardWebDesc: "OWASP Top 10, auth, CSRF, XSS, and secure design.",
-  cardCrypto: "Cryptography",
-  cardCryptoDesc: "Hashes, ciphers, PKI, TLS, and key management.",
-  cardlinux: "Linux Tools",
-  cardlinuxDesc: "Essential CLI tools, filesystem layout, permissions, package managers, and shell scripting.",
-  viewModules: "View modules",
+  ctaFundamentals: "Start with Fundamentals",
+  
   labsTitle: "Interactive labs",
   labsDesc:
     "Practice in a safe environment. Simulate attacks, analyze logs, and apply defenses with guided tasks.",
@@ -131,9 +99,9 @@ const en = {
   
   benefit1: "Step-by-step modules with checkpoints",
   benefit2: "Visual summaries and diagrams",
-  benefit3: "Hands-on labs with automated hints",
+  benefit3: "labs with automated hints",
   benefit4: "Dark and light themes for comfort",
-  trainingTitle: "Hands-on Cybersecurity Training",
+  trainingTitle: "Cybersecurity Training",
   trainingText:
     "Interactive workshops and flexible programs designed to help you understand, practice, and apply real-world cybersecurity skills.",
       trainingNew:"Get Started",
@@ -152,19 +120,9 @@ const ar = {
   heroSlug: " تعلّم، استشار، احماية.",
   heroSubtitle:
     "تقودك سيبرا عبر مفاهيم أساسية مثل الشبكات وأمن الويب والتشفير ونمذجة التهديد بطريقة عملية ومبسطة.",
-  ctaTracks: "استكشف مسارات التعلّم",
+  ctaFundamentals: "ابدأ بالأساسيات",
   ctaTraining: "عرض برامج التدريب",
-  tracksTitle: "مسارات التعلّم",
-  tracksDesc: "تقدّم خلال مسارات مُختارة للمبتدئين ولتطوير المهارات.",
-  cardNetworking: "أساسيات الشبكات",
-  cardNetworkingDesc: "نموذج OSI وTCP/IP والتوجيه وتحليل المرور.",
-  cardWeb: "أمن الويب",
-  cardWebDesc: "OWASP Top 10 والمصادقة وCSRF وXSS والتصميم الآمن.",
-  cardCrypto: "التشفير",
-  cardCryptoDesc: "الهاش والتعمية وPKI وTLS وإدارة المفاتيح.",
-  cardlinux: "ادوات لينكس",
-  cardlinuxDesc: "أدوات CLI الأساسية، بنية نظام الملفات، الصلاحيات، مدراء الحزم، وسكربتات الشِل.",
-  viewModules: "عرض الوحدات",
+  
   labsTitle: "معامل تفاعلية",
   labsDesc:
     "تدرّب في بيئة آمنة. حاكِ الهجمات، وحلّل السجلات، وطبّق الدفاعات بمهام مُوجّهة.",

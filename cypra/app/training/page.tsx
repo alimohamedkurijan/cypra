@@ -13,9 +13,7 @@ export default function TrainingPage() {
         <div className="absolute inset-0 bg-[radial-gradient(600px_circle_at_20%_10%,_rgba(34,197,94,0.15),_transparent_60%),radial-gradient(700px_400px_at_80%_20%,_rgba(34,197,94,0.08),_transparent_60%)] pointer-events-none" />
         <div className="mx-auto max-w-6xl px-4 sm:px-6 py-24 sm:py-28">
           <div className="max-w-3xl">
-            <p className="inline-flex items-center rounded-full border border-border/70 bg-card/70 px-2.5 py-1 text-xs text-muted-foreground backdrop-blur">
-              {t.badge}
-            </p>
+          
             <h1 className="mt-6 text-4xl sm:text-5xl md:text-6xl font-semibold tracking-tight">
               {t.heroTitle}
             </h1>
@@ -38,21 +36,27 @@ export default function TrainingPage() {
               desc: t.program1Desc,
               duration: t.program1Duration,
               level: t.program1Level,
-              features: [t.program1Feature1, t.program1Feature2, t.program1Feature3]
+              features: [t.program1Feature1, t.program1Feature2, t.program1Feature3],
+              href: "/training/fundamentals",
+              cta: t.viewCurriculum
             },
             {
               title: t.program2Title,
               desc: t.program2Desc,
               duration: t.program2Duration,
               level: t.program2Level,
-              features: [t.program2Feature1, t.program2Feature2, t.program2Feature3]
+              features: [t.program2Feature1, t.program2Feature2, t.program2Feature3],
+              href: "#",
+              cta: t.comingSoon
             },
             {
               title: t.program3Title,
               desc: t.program3Desc,
               duration: t.program3Duration,
               level: t.program3Level,
-              features: [t.program3Feature1, t.program3Feature2, t.program3Feature3]
+              features: [t.program3Feature1, t.program3Feature2, t.program3Feature3],
+              href: "#",
+              cta: t.comingSoon
             }
           ].map((program, index) => (
             <div key={index} className="rounded-xl border border-border bg-card p-6 hover:shadow-sm transition-shadow">
@@ -75,8 +79,8 @@ export default function TrainingPage() {
                 ))}
               </ul>
               <div className="mt-6">
-                <a className="text-primary hover:underline font-medium" href="#">
-                  {t.learnMore} →
+                <a className="text-primary hover:underline font-medium" href={program.href} aria-disabled={program.href === "#"}>
+                  {program.cta} →
                 </a>
               </div>
             </div>
@@ -148,7 +152,7 @@ export default function TrainingPage() {
 
 const en = {
   badge: "Professional Training",
-  heroTitle: "Hands-on Cybersecurity Training",
+  heroTitle: "Cybersecurity Training",
   heroSubtitle: "Interactive workshops and flexible programs designed to help you understand, practice, and apply real-world cybersecurity skills.",
   
   programsTitle: "Training Programs",
@@ -166,7 +170,7 @@ const en = {
   program2Desc: "Learn advanced techniques for ethical hacking, vulnerability assessment, and security testing.",
   program2Duration: "12 weeks",
   program2Level: "Advanced",
-  program2Feature1: "Hands-on penetration testing",
+  program2Feature1: "penetration testing",
   program2Feature2: "Tool mastery and automation",
   program2Feature3: "Red team exercises",
   
@@ -198,6 +202,8 @@ const en = {
   date: "Date",
   instructor: "Instructor",
   learnMore: "Learn More",
+  viewCurriculum: "View Curriculum",
+  comingSoon: "Coming soon",
   registerNow: "Register Now",
   contactUs: "Contact Us",
   backToHome: "Back to Home"
@@ -205,7 +211,7 @@ const en = {
 
 const ar = {
   badge: "التدريب المهني",
-  heroTitle: "التدريب العملي للأمن السيبراني",
+  heroTitle: "التدريب للأمن السيبراني",
   heroSubtitle: "ورش عمل تفاعلية وبرامج مرنة تساعدك على الفهم والممارسة وتطبيق مهارات الأمن السيبراني الواقعية.",
   
   programsTitle: "برامج التدريب",
@@ -255,6 +261,8 @@ const ar = {
   date: "التاريخ",
   instructor: "المدرب",
   learnMore: "اعرف المزيد",
+  viewCurriculum: "عرض المنهج",
+  comingSoon: "قريباً",
   registerNow: "سجل الآن",
   contactUs: "تواصل معنا",
   backToHome: "العودة للرئيسية"
