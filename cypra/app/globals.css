@@ -1,0 +1,110 @@
+@import "tailwindcss";
+
+:root {
+  /* Base light mode tokens */
+  --background: #ffffff;
+  --foreground: #0a0a0a;
+
+  /* Brand palette (light) */
+  --primary: #16a34a; /* green-600 */
+  --primary-foreground: #ffffff;
+  --muted: #f3f4f6; /* gray-100 */
+  --muted-foreground: #4b5563; /* gray-600 */
+  --card: #ffffff;
+  --card-foreground: #111827; /* gray-900 */
+  --border: #e5e7eb; /* gray-200 */
+  --ring: #22c55e; /* green-500 */
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-border: var(--border);
+  --color-ring: var(--ring);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0b0f0c; /* near-black with green tint */
+    --foreground: #e5e7eb; /* gray-200 */
+
+    /* Brand palette (dark) */
+    --primary: #22c55e; /* green-500 */
+    --primary-foreground: #052e16; /* green-950 */
+    --muted: #111827; /* gray-900 */
+    --muted-foreground: #9ca3af; /* gray-400 */
+    --card: #0f1511;
+    --card-foreground: #e5e7eb;
+    --border: #1f2937; /* gray-800 */
+    --ring: #22c55e;
+  }
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-geist-sans), ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji", "Segoe UI Emoji";
+}
+
+/* Header gradient animation */
+@keyframes header-gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* Explicit theme overrides when user selects a theme */
+[data-theme="light"] {
+  --background: #ffffff;
+  --foreground: #0a0a0a;
+  --primary: #16a34a;
+  --primary-foreground: #ffffff;
+  --muted: #f3f4f6;
+  --muted-foreground: #4b5563;
+  --card: #ffffff;
+  --card-foreground: #111827;
+  --border: #e5e7eb;
+  --ring: #22c55e;
+}
+
+[data-theme="dark"] {
+  --background: #0b0f0c;
+  --foreground: #e5e7eb;
+  --primary: #22c55e;
+  --primary-foreground: #052e16;
+  --muted: #111827;
+  --muted-foreground: #9ca3af;
+  --card: #0f1511;
+  --card-foreground: #e5e7eb;
+  --border: #1f2937;
+  --ring: #22c55e;
+}
+
+/* Logo visibility rules: default to system preference, allow explicit overrides */
+.logo-light { display: inline-flex; }
+.logo-dark { display: none; }
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme]) .logo-light { display: none; }
+  :root:not([data-theme]) .logo-dark { display: inline-flex; }
+}
+
+[data-theme="dark"] .logo-light { display: none; }
+[data-theme="dark"] .logo-dark { display: inline-flex; }
+
+[data-theme="light"] .logo-light { display: inline-flex; }
+[data-theme="light"] .logo-dark { display: none; }
