@@ -1,0 +1,9 @@
+[build]
+  base = "cypra"
+  command = "npm run build:netlify"
+  publish = "cypra/.next"
+
+[[plugins]]
+  package = "@netlify/plugin-nextjs"
+
+
