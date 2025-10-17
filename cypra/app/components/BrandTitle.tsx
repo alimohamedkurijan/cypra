@@ -3,9 +3,19 @@
 import { useApp } from "./Providers";
 
 export default function BrandTitle() {
-  const { language } = useApp();
+  const { language, isHydrated } = useApp();
+  
+  // Prevent hydration mismatch by using default during SSR
+  if (!isHydrated) {
+    return (
+      <span className="font-semibold text-base sm:text-lg tracking-tight uppercase">
+        Cypra
+      </span>
+    );
+  }
+  
   return (
-    <span className="font-semibold text-base sm:text-lg tracking-tight">
+    <span className="font-semibold text-base sm:text-lg tracking-tight uppercase">
       {language === "ar" ? "سيبرا" : "Cypra"}
     </span>
   );

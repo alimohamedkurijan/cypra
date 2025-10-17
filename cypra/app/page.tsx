@@ -3,7 +3,7 @@
 import { useApp } from "./components/Providers";
 
 export default function Home() {
-  const { language } = useApp();
+  const { language, isHydrated } = useApp();
   const t = language === "ar" ? ar : en;
   return (
     <div className="font-sans">
@@ -18,7 +18,7 @@ export default function Home() {
             <h1 className="mt-6 text-4xl sm:text-5xl md:text-6xl font-semibold tracking-tight">
               {t.heroTitle}
             </h1>
-            <h1 className="mt-6 text-4xl sm:text-5xl md:text-6xl font-semibold tracking-tight">
+            <h1 className="mt-6 text-2xl sm:text-2xl md:text-4xl font-semibold tracking-tight">
               {t.heroSlug}
               </h1>
             <p className="mt-4 text-base sm:text-lg text-muted-foreground max-w-xl">
@@ -32,10 +32,10 @@ export default function Home() {
                 {t.ctaTracks}
               </a>
               <a
-                href="#labs"
+                href="/training"
                 className="inline-flex items-center justify-center rounded-md border border-border px-5 py-3 text-sm font-medium hover:bg-muted/60"
               >
-                {t.ctaLab}
+                {t.ctaTraining}
               </a>
             </div>
           </div>
@@ -64,41 +64,25 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Labs */}
-      <section id="labs" className="mx-auto max-w-6xl px-4 sm:px-6 py-16 sm:py-20">
-        <div className="rounded-2xl border border-border bg-card p-6 sm:p-8">
-          <div className="flex flex-col md:flex-row items-start md:items-center gap-6 justify-between">
-            <div>
-              <h2 className="text-2xl sm:text-3xl font-semibold">{t.labsTitle}</h2>
-              <p className="mt-2 text-muted-foreground max-w-2xl">{t.labsDesc}</p>
-            </div>
-            <a
-              href="#"
-              className="inline-flex items-center justify-center rounded-md bg-primary text-primary-foreground px-5 py-3 text-sm font-medium shadow-sm hover:brightness-95"
-            >
-              {t.launchLab}
-            </a>
-          </div>
-        </div>
-      </section>
-
       {/* Training */}
       <section id="training" className="mx-auto max-w-6xl px-4 sm:px-6 py-16 sm:py-20">
         <div className="rounded-2xl border border-border bg-card p-6 sm:p-8">
           <h2 className="text-2xl sm:text-3xl font-semibold">{t.trainingTitle}</h2>
           <p className="mt-2 text-muted-foreground max-w-3xl">{t.trainingText}</p>
+            <a className="inline-flex items-center justify-center rounded-md bg-primary text-primary-foreground px-5 py-3 text-sm font-medium shadow-sm hover:brightness-95 mt-4" href="/training">{t.trainingNew}</a>
         </div>
       </section>
 
      
 
-      {/* Consulting */}
-      <section id="consulting" className="mx-auto max-w-6xl px-4 sm:px-6 py-16 sm:py-20">
-        <div className="rounded-2xl border border-border bg-card p-6 sm:p-8">
-          <h2 className="text-2xl sm:text-3xl font-semibold">{t.consultingTitle}</h2>
-          <p className="mt-2 text-muted-foreground max-w-3xl">{t.consultingText}</p>
-        </div>
-      </section>
+          {/* Consulting */}
+          <section id="consulting" className="mx-auto max-w-6xl px-4 sm:px-6 py-16 sm:py-20">
+            <div className="rounded-2xl border border-border bg-card p-6 sm:p-8">
+              <h2 className="text-2xl sm:text-3xl font-semibold">{t.consultingTitle}</h2>
+              <p className="mt-2 text-muted-foreground max-w-3xl">{t.consultingText}</p>
+              <a className="inline-flex items-center justify-center rounded-md bg-primary text-primary-foreground px-5 py-3 text-sm font-medium shadow-sm hover:brightness-95 mt-4" href="/consultation">{t.consultationNew}</a>
+            </div>
+          </section>
 
        {/* About */}
        <section id="about" className="mx-auto max-w-6xl px-4 sm:px-6 py-16 sm:py-20">
@@ -123,12 +107,12 @@ export default function Home() {
 
 const en = {
   badge: "Cybersecurity learning platform",
-  heroTitle: "Learn cybersecurity fundamentals with hands-on lessons and labs",
+  heroTitle: "CYPRA",
   heroSlug: "Learn, Consult, Secure.",
   heroSubtitle:
     "Cypra guides you through core concepts like networking, web security, cryptography, and threat modeling using practical, bite-sized modules.",
   ctaTracks: "Explore learning tracks",
-  ctaLab: "Try an interactive lab",
+  ctaTraining: "View Training Programs",
   tracksTitle: "Learning tracks",
   tracksDesc: "Progress through curated paths designed for beginners and upskillers.",
   cardNetworking: "Networking Basics",
@@ -152,6 +136,8 @@ const en = {
   trainingTitle: "Hands-on Cybersecurity Training",
   trainingText:
     "Interactive workshops and flexible programs designed to help you understand, practice, and apply real-world cybersecurity skills.",
+      trainingNew:"Get Started",
+      consultationNew:"Request Consultation",
   consultingTitle: "Expert Cybersecurity Consulting",
   consultingText:
     "Get tailored guidance from certified cybersecurity professionals to assess, plan, and strengthen your organization’s defenses.",
@@ -162,12 +148,12 @@ const en = {
 
 const ar = {
   badge: "منصة تعليم الأمن السيبراني",
-  heroTitle: "تعلّم أساسيات الأمن السيبراني بدروس ومعامل عملية",
+  heroTitle: "سيبرا",
   heroSlug: " تعلّم، استشار، احماية.",
   heroSubtitle:
     "تقودك سيبرا عبر مفاهيم أساسية مثل الشبكات وأمن الويب والتشفير ونمذجة التهديد بطريقة عملية ومبسطة.",
   ctaTracks: "استكشف مسارات التعلّم",
-  ctaLab: "جرّب معملًا تفاعليًا",
+  ctaTraining: "عرض برامج التدريب",
   tracksTitle: "مسارات التعلّم",
   tracksDesc: "تقدّم خلال مسارات مُختارة للمبتدئين ولتطوير المهارات.",
   cardNetworking: "أساسيات الشبكات",
@@ -191,6 +177,8 @@ const ar = {
   trainingTitle: "قسم التدريب",
   trainingText:
     "ورش عمل تفاعلية وبرامج مرنة تساعدك على الفهم والممارسة وتطبيق مهارات الأمن السيبراني الواقعية.",
+      trainingNew: "ابدأ الآن",
+      consultationNew: "طلب استشارة",
   consultingTitle: "قسم الاستشارات",
   consultingText:
     "احصل على إرشاد مخصص من خبراء معتمدين لتقييم وتخطيط وتعزيز دفاعات مؤسستك.",

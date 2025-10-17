@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { IBM_Plex_Sans, IBM_Plex_Sans_Arabic } from "next/font/google";
 import "./globals.css";
 import Providers from "./components/Providers";
 import LangThemeMenu from "./components/LangThemeMenu";
@@ -7,14 +7,19 @@ import HeaderNav from "./components/HeaderNav";
 import BrandTitle from "./components/BrandTitle";
 import BrandLogo from "./components/BrandLogo";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const plex = IBM_Plex_Sans({
+  weight: ["400", "500", "600", "700"],
+  style: ["normal", "italic"],
   subsets: ["latin"],
+  variable: "--font-plex-sans",
+  display: "swap",
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
+const plexArabic = IBM_Plex_Sans_Arabic({
+  weight: ["400", "500", "600", "700"],
+  subsets: ["arabic"],
+  variable: "--font-plex-arabic",
+  display: "swap",
 });
 
 export const metadata: Metadata = {
@@ -53,7 +58,9 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased bg-background text-foreground`}
+        className={
+          `${plex.variable} ${plexArabic.variable} antialiased bg-background text-foreground`
+        }
       >
         <Providers>
         <header className="sticky top-0 z-50 w-full border-b border-border/60 supports-[backdrop-filter]:bg-background/70 backdrop-blur">

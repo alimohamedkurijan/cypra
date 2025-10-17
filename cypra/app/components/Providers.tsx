@@ -10,6 +10,7 @@ type AppContextValue = {
   theme: Theme;
   setLanguage: (lang: Language) => void;
   setTheme: (theme: Theme) => void;
+  isHydrated: boolean;
 };
 
 const AppContext = React.createContext<AppContextValue | undefined>(undefined);
@@ -23,13 +24,24 @@ export function useApp() {
 export default function Providers({ children }: { children: React.ReactNode }) {
   const [language, setLanguageState] = React.useState<Language>("en");
   const [theme, setThemeState] = React.useState<Theme>("system");
+  const [isHydrated, setIsHydrated] = React.useState(false);
 
   React.useEffect(() => {
+    setIsHydrated(true);
     try {
       const storedLang = localStorage.getItem("cypra:lang") as Language | null;
       const storedTheme = localStorage.getItem("cypra:theme") as Theme | null;
       if (storedLang === "en" || storedLang === "ar") setLanguageState(storedLang);
-      if (storedTheme === "system" || storedTheme === "light" || storedTheme === "dark") setThemeState(storedTheme);
+      if (storedTheme === "system" || storedTheme === "light" || storedTheme === "dark") {
+        setThemeState(storedTheme);
+        // Apply theme immediately
+        const root = document.documentElement;
+        if (storedTheme === "system") {
+          root.removeAttribute("data-theme");
+        } else {
+          root.setAttribute("data-theme", storedTheme);
+        }
+      }
     } catch {}
   }, []);
 
@@ -58,8 +70,8 @@ export default function Providers({ children }: { children: React.ReactNode }) {
   const setTheme = React.useCallback((t: Theme) => setThemeState(t), []);
 
   const value = React.useMemo(
-    () => ({ language, theme, setLanguage, setTheme }),
-    [language, theme, setLanguage, setTheme]
+    () => ({ language, theme, setLanguage, setTheme, isHydrated }),
+    [language, theme, setLanguage, setTheme, isHydrated]
   );
 
   return <AppContext.Provider value={value}>{children}</AppContext.Provider>;
