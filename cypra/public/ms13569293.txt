@@ -1,0 +1,6 @@
+{
+  "Description": "Domain ownership verification file for Microsoft 365 - place in the website root",
+  "Domain": "cypra.co",
+  "Id": "cf905150-6dda-4f5e-994e-77458c26755c"
+}
+
